@@ -4,8 +4,8 @@ go:
 script:
 - go test ./...
 deploy:
-  provider:
-    provider: cloudfoundry
+  edge: true
+  provider: cloudfoundry
   api:
     secure: OeLv4GBwNt3tdSY5PTeID2KGhE6e9mS1RHlAx0ccQg1Xnnf6l3gZuwiahuGYl86oVKUdnm1x7Kfuu6RdRGJQwcPz7TjS2Emxgbu37AoLTiNeFy2YdVUy5qBSBsl3daV7cc6U/lgd3qkenS4zvJ+LGBMdtmBVSLIs2fliO77RkfadsYBU6L7s/NlTEm3TSZ1kFpjMbpmPIgUSlm2spubOyJh6vWuAJIvmEJAJ+bwleEY+70ceciE8gClSXyPOEDCSoqVPf0noDc8RpWGxcIk8YSSFit4+nu7TsrpxNqQIHRCaAUKGLUnICnM8aqqn6vw4uC9xxtQMdAIQxegGuQ9gClybvKkBwwIyDpWD0dv/5T9FL6880UwybOmjM5VSyNV1QxvzQnIzus4Mr7qLZL0kA4rHMddxYqSll6tJgC7/G62GqNS1RiME9oqK9Ks2nfqiDnLqrQIeOOaoQDH3LXe2+5m4rdNyQmHTCQjWo7TDU5BJNdgCnko+BQ98/iAfhkSisO323Foyw41e0IwI5Z3dwg2NemYSK4PeIggDXHOOKnn8tlyqVJV33E0VXwf6tf4Pk5/3HBj7xy+lsFHakk8f6/VrAkjFoTczlPMVDOdbjEu1OwaDJTxENh8YgiBfRgiil81MGlOWid2XXj4Wrox9VGxd29IP2dlQEG7J1WetQ0Q=
   username:
