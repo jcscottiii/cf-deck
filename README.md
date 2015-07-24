@@ -1,5 +1,7 @@
 # 18F Cloud Foundry Console
 
+[![codecov.io](http://codecov.io/github/18F/cf-console/coverage.svg?branch=travis)](http://codecov.io/github/18F/cf-console?branch=master)
+
 ## Tech Stack
 - `Go` for the backend server.
 - `AngularJS` for the frontend.
