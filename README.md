@@ -46,3 +46,18 @@ bower install bootstrap
 
 ## Deploying
 - `cf push <optional-app-name>`
+
+
+## Workflow Setup
+### Travis-CI
+- Install the [Travis CLI tool](https://github.com/travis-ci/travis.rb)
+- `gem install travis -v 1.8.0 --no-rdoc --no-ri`
+- Encrpyt your password, username, space, and api so you can push the .yml file to the repo.
+```
+travis encrypt --add deploy.password
+travis encrypt --add deploy.username
+travis encrypt --add deploy.space
+travis encrypt --add deploy.api
+```
+- When entering these values, type them, press enter, then type ctrl-d
+- More details about Cloud Foundry deployments on Travis can be found [here](http://docs.travis-ci.com/user/deployment/cloudfoundry/)
