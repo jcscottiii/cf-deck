@@ -37,7 +37,7 @@
 
             } else {
                 $scope.activeOrg = orgData.name;
-                $scope.spaces = orgData.spaces;
+                $scope.spaces = orgData.spaces
             }
         };
         // Get Orgs or return to login page
@@ -69,4 +69,16 @@
         $cloudfoundry.getOrgsData(renderOrgs);
         $scope.visibleTab = "spaces";
     });
+
+
+    app.controller('MarketCtrl', function($scope, $cloudfoundry) {
+        $scope.showService = function(service) {
+            console.log(service);
+        };
+        $cloudfoundry.getAllServices().then(function(services) {
+            $scope.services = services;
+            $scope.visibleTab = 'marketplace';
+        });
+    });
+
 }());
