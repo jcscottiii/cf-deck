@@ -1,3 +1,6 @@
 *.swp
 *.swo
 *.cov
+
+cf-deck
+/node_modules

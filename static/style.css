@@ -1,0 +1,51 @@
+
+
+
+h1, h2, h3, h4, h5 {
+  color: #1c1c1c;
+  font-family: 'Helvetica', 'Arial';
+  margin: 1% 0;
+}
+
+h1 {
+  font-size: 192px;
+  font-size: 12rem;
+}
+@media (max-width: 400px) {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 128px;
+  font-size: 8rem;
+}
+@media (max-width: 400px) {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 96px;
+  font-size: 6rem;
+}
+@media (max-width: 400px) {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 32px;
+  font-size: 2rem;
+}
+@media (max-width: 400px) {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+
+a {
+  color: #313649;
+}
+

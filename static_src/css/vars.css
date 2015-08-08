@@ -1,0 +1,10 @@
+
+@custom-media --viewport-sm (max-width: 400px);
+
+:root {
+  --primary: #313649;
+  --secondary: #b70b0b;
+  --dark: #1c1c1c;
+  --white: #fff;
+}
+
