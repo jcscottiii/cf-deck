@@ -5,12 +5,13 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var postcss_local_scope = require('postcss-local-scope');
 
 var srcDir = './static_src';
+var compiledDir = './static/assets';
 
 module.exports = {
   entry: srcDir + '/main.js',
 
   output: {
-    path: path.resolve('./static'),
+    path: path.resolve(compiledDir),
     filename: "bundle.js"
   },
 

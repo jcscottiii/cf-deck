@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && webpack",
     "codecov": "cat ./coverage/coverage-final.json | ./node_modules/codecov.io/bin/codecov.io.js",
-    "clean": "rm -rf ./public/*",
+    "clean": "rm -rf ./static/assets/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
