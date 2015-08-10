@@ -5,7 +5,17 @@ html {
   font-size: 62.5%;
 }
 
-p, span {
+body {
+  font-size: 1.5rem;
+}
+
+span {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--font-leading-body);
+}
+
+p, a {
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
   line-height: var(--font-leading-body);
