@@ -13,6 +13,7 @@ button,
   border: 0;
   border-radius: 4px;
   color: var(--light);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   line-height: 1;
   margin: .5rem 0;

@@ -1,8 +1,8 @@
 
 @import 'vars.css';
 
-body {
-  font-size: 16px;
+html {
+  font-size: 62.5%;
 }
 
 p, span {
@@ -16,7 +16,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-bold);
   line-height: var(--font-leading-sm);
-  margin: .1em 0 .5em 0;
+  margin: .1em 0 .2em 0;
+}
+
+h4 + button {
+  margin-top: 3rem;
 }
 
 h1 {

@@ -1,0 +1,12 @@
+
+@import 'vars.css';
+
+:global(.label) {
+  background-color: var(--primary);
+  border-radius: 5px;
+  color: var(--light);
+  font-size: .8em;
+  padding: 0.3em 0.7em 0.2em 0.7em;
+  text-transform: uppercase;
+  vertical-align: text-top;
+}

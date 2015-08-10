@@ -8,7 +8,10 @@
     "codecov": "cat ./coverage/coverage-final.json | ./node_modules/codecov.io/bin/codecov.io.js",
     "clean": "rm -rf ./static/assets/*",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --progress --colors --watch"
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": "./static_src/**/*"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +26,7 @@
     "istanbul": "^0.3.5",
     "jsx-loader": "^0.13.2",
     "node-libs-browser": "^0.5.2",
+    "npm-watch": "0.0.0",
     "postcss-import": "^6.2.0",
     "postcss-loader": "^0.4.4",
     "postcss-local-scope": "0.0.5",

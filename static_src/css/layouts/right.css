@@ -1,0 +1,7 @@
+
+@import 'vars.css';
+
+:global(.right-content) {
+  margin: 2rem 0;
+  text-align: right;
+}

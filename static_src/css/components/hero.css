@@ -1,0 +1,13 @@
+
+@import 'vars.css';
+
+.hero,
+:global(.hero) {
+  padding: 4rem;
+  text-align: center;
+}
+
+.hero-sm,
+:global(.hero-sm) {
+  lost-center: 560px;
+}
