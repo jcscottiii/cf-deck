@@ -1,0 +1,31 @@
+
+@import 'vars.css';
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  appearance: none;
+  background-color: var(--primary);
+  border: 0;
+  border-radius: 4px;
+  color: var(--light);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  margin: .5rem 0;
+  outline: none;
+  padding: 1em 2em;
+  text-align: center;
+  width: auto;
+}
+
+button:hover {
+  background-color: color(var(--primary) w(- 20%) s(- 10%));
+}
+
+button:active {
+  background-color: color(var(--primary) w(+ 20%) s(+ 10%));
+}

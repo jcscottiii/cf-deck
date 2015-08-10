@@ -1,7 +1,12 @@
 
 import 'normalize.css';
 
-import './css/main.css';
+import './css/elements/button.css';
+import './css/elements/global.css';
+import './css/elements/typography.css';
+import './css/elements/links.css';
+
+import './css/layouts/side_bar.css';
 
 
 import React from 'react';

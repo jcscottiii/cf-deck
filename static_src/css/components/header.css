@@ -1,0 +1,14 @@
+
+@import 'vars.css';
+
+.header {
+  lost-column: 1/1;
+  lost-utility: clearfix;
+  background: var(--primary);
+  padding: 1rem 1.5rem 2rem;
+}
+
+.header * {
+  color: var(--light);
+}
+

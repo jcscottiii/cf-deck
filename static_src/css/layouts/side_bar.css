@@ -1,0 +1,13 @@
+
+@import 'vars.css';
+
+:global .side_bar {
+  lost-column: 1/6;
+  padding: 1.5rem 1rem;
+}
+
+:global .main_bar {
+  lost-column: 5/6;
+  clear: both;
+  padding: 1.5rem 1rem;
+}

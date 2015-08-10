@@ -6,6 +6,7 @@
   --primary-dark: color(var(--primary) w(+ 20%) s(+ 20%));
   --secondary: #b70b0b;
   --dark: #1c1c1c;
+  --light: #fff;
   --white: #fff;
 
   --font-family-body: 'Helvetica', 'Arial';
@@ -24,5 +25,7 @@
   --font-size-h6: 1.2rem;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
+
+  --layout-padding: 40px;
 }
 
