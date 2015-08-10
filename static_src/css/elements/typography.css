@@ -1,0 +1,44 @@
+
+@import 'vars.css';
+
+body {
+  font-size: 16px;
+}
+
+p, span {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--font-leading-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-leading-sm);
+  margin: .1em 0 .5em 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+}

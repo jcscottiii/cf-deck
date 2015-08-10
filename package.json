@@ -29,6 +29,8 @@
     "webpack": "^1.9.10"
   },
   "dependencies": {
+    "lost": "^6.5.0",
+    "normalize.css": "^3.0.3",
     "react": "^0.13.3",
     "react-router": "^0.13.3"
   }

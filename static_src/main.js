@@ -1,13 +1,15 @@
 
+import 'normalize.css';
+
+import './css/main.css';
+
+
 import React from 'react';
 import Router from 'react-router';
 
-import './css/vars.css';
-import './css/elements/headings.css';
-import './css/elements/links.css';
-
 import App from './app.jsx'
 import Home from './views/home.jsx';
+
 
 var Route = Router.Route,
     DefaultRoute = Router.DefaultRoute;

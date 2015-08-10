@@ -2,6 +2,20 @@
 @import 'vars.css';
 
 a {
+  border-bottom: 1px dotted;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+}
+
+a:hover, a:active {
+  color: var(--primary-dark);
+}
+
+a:visited {
   color: var(--primary);
 }
 

@@ -1,0 +1,14 @@
+
+@import 'vars.css';
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+[aria-hidden=true] {
+  display: none !important;
+}
