@@ -21,6 +21,10 @@ export default class Home extends React.Component {
     });
   }
 
+  login() {
+    window.location.href='/handshake';
+  }
+
   render() {
     return (
       <article className="hero hero-sm">
@@ -28,7 +32,7 @@ export default class Home extends React.Component {
         {this.state.authorized == 'unauthorized' ? (
           <div>
             <h4>Please login to continue</h4>
-            <button href="/handshake">Login</button>
+            <button onClick={ this.login }>Login</button>
           </div>
           ) : (
           <h4>Logged in</h4>

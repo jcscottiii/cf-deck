@@ -24251,6 +24251,11 @@
 	      });
 	    }
 	  }, {
+	    key: 'login',
+	    value: function login() {
+	      window.location.href = '/handshake';
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
@@ -24271,7 +24276,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { href: '/handshake' },
+	            { onClick: this.login },
 	            'Login'
 	          )
 	        ) : _react2['default'].createElement(
