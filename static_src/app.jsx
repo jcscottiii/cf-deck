@@ -1,22 +1,24 @@
 
 import React from 'react';
+import Router from 'react-router';
+
+var RouteHandler = Router.RouteHandler;
 
 export default class App extends React.Component {
   constructor() {
     super();
-    this.handleClick = this.handleClick.bind(this);
-    this.render = this.render.bind(this);
-    this.state = {
-      visible: false
-    };
   }
 
   render() {
     return (
-      <main>
+      <div>
         <h1>CF Deck</h1>
-      </main>
+        <main>
+          <RouteHandler/>
+        </main>
+      </div>
     );
   }
 
 }
+
