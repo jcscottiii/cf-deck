@@ -30,16 +30,16 @@ export default class Home extends React.Component {
       <article className="hero hero-sm">
         <h1>Welcome to cf-deck</h1>
         {this.state.authorized == 'unauthorized' ? (
-          <div>
+          <div className="test-login">
             <h4>Please login to continue</h4>
             <button onClick={ this.login }>Login</button>
           </div>
           ) : (
-          <h4>Logged in</h4>
+          <h4 className="test-navigation">Logged in</h4>
         )}
         <aside className="right-content">
           <h5>Version: <span className="label">Alpha</span></h5>
-          <a className="link-block"
+          <a className="link-block test-contribute_link"
               href="https://github.com/18F/cf-deck">
             Contribute
           </a>

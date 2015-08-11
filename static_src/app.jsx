@@ -2,9 +2,14 @@
 import React from 'react';
 import Router from 'react-router';
 
+import Home from './views/home.jsx';
+
+
 import styles from './css/components/header.css';
 
-var RouteHandler = Router.RouteHandler;
+var RouteHandler = Router.RouteHandler,
+    Route = Router.Route,
+    DefaultRoute = Router.DefaultRoute;
 
 export default class App extends React.Component {
   constructor() {
@@ -26,6 +31,16 @@ export default class App extends React.Component {
       </div>
     );
   }
-
 }
 
+var routes = (
+  <Route path="/" handler={App}>
+    <DefaultRoute handler={Home}/>
+  </Route>
+);
+
+export function run(selector) {
+  Router.run(routes, Router.HistoryLocation, (Root) => {
+    React.render(<Root/>, selector);
+  });
+};

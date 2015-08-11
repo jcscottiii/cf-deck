@@ -16,6 +16,8 @@ module.exports = {
     filename: "bundle.js"
   },
 
+  devtool: 'inline-source-map',
+
   module: {
     loaders: [
       { test: /\.jsx?$/,
