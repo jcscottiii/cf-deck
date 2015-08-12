@@ -10,6 +10,7 @@ import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
 
 import Home from '../../views/home.jsx';
+import { cf } from '../../cloud_foundry';
 
 describe('Home', () => {
   describe('render()', () => {
@@ -71,7 +72,30 @@ describe('Home', () => {
     });
   });
 
-  xdescribe('componentDidMount()', () => {
+  describe('componentDidMount()', () => {
+    it('should get auth status from cf and set authorized state', () => {
+      var expected = 'unauthorized';
+      var stub = sinon.stub(cf, 'getAuthStatus');
 
+      stub.onFirstCall().returns({
+        then(cb) {
+          return cb(expected);
+        }
+      });
+      stub.onSecondCall().returns({
+        then(cb) {
+          return cb(expected);
+        }
+      });
+
+      let home = TestUtils.renderIntoDocument(<Home/>);
+      let actual = home.state.authorized;
+      expect(actual).toEqual(expected);
+
+      expected = 'authorized';
+      home = TestUtils.renderIntoDocument(<Home/>);
+      actual = home.state.authorized;
+      expect(actual).toEqual(expected)
+    });
   });
 });

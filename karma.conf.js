@@ -7,7 +7,7 @@ module.exports = function(config) {
     config.set({
       browsers: ['PhantomJS', 'Chrome'],
 
-      frameworks: ['jasmine', 'jasmine-matchers', 'phantomjs-shim'],
+      frameworks: ['jasmine', 'jasmine-matchers', 'sinon', 'phantomjs-shim'],
 
       files: [ './static_src/tests.bundle.js' ],
 
@@ -19,6 +19,7 @@ module.exports = function(config) {
         'karma-jasmine-matchers',
         'karma-phantomjs-launcher',
         'karma-phantomjs-shim',
+        'karma-sinon',
         'karma-sourcemap-loader',
         'karma-webpack',
       ],
