@@ -23666,7 +23666,11 @@
 
 	var _viewsHomeJsx2 = _interopRequireDefault(_viewsHomeJsx);
 
-	var _cssComponentsHeaderCss = __webpack_require__(256);
+	var _componentsOrg_listJsx = __webpack_require__(256);
+
+	var _componentsOrg_listJsx2 = _interopRequireDefault(_componentsOrg_listJsx);
+
+	var _cssComponentsHeaderCss = __webpack_require__(257);
 
 	var _cssComponentsHeaderCss2 = _interopRequireDefault(_cssComponentsHeaderCss);
 
@@ -23704,8 +23708,9 @@
 	          _react2['default'].createElement(
 	            'h4',
 	            null,
-	            'Navigation'
-	          )
+	            'Organizations'
+	          ),
+	          _react2['default'].createElement(_componentsOrg_listJsx2['default'], null)
 	        ),
 	        _react2['default'].createElement(
 	          'main',
@@ -26324,6 +26329,66 @@
 
 /***/ },
 /* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(207)['default'];
+
+	var _inherits = __webpack_require__(221)['default'];
+
+	var _createClass = __webpack_require__(231)['default'];
+
+	var _classCallCheck = __webpack_require__(234)['default'];
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(11);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var OrgList = (function (_React$Component) {
+	  _inherits(OrgList, _React$Component);
+
+	  function OrgList(props) {
+	    _classCallCheck(this, OrgList);
+
+	    _get(Object.getPrototypeOf(OrgList.prototype), 'constructor', this).call(this, props);
+	    this.state = { orgs: props.initialOrgs };
+	  }
+
+	  _createClass(OrgList, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'ul',
+	        null,
+	        this.state.orgs.map(function (org) {
+	          return _react2['default'].createElement(
+	            'li',
+	            { key: org.id },
+	            org.name
+	          );
+	        })
+	      );
+	    }
+	  }]);
+
+	  return OrgList;
+	})(_react2['default'].Component);
+
+	exports['default'] = OrgList;
+
+	OrgList.propTypes = { initialOrgs: _react2['default'].PropTypes.array };
+	OrgList.defaultProps = { initialOrgs: [] };
+	module.exports = exports['default'];
+
+/***/ },
+/* 257 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

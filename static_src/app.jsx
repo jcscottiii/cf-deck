@@ -4,6 +4,8 @@ import Router from 'react-router';
 
 import Home from './views/home.jsx';
 
+import OrgList from './components/org_list.jsx';
+
 
 import styles from './css/components/header.css';
 
@@ -23,7 +25,8 @@ export default class App extends React.Component {
           <h3>cf-deck</h3>
         </header>
         <aside className="side_bar">
-          <h4>Navigation</h4>
+          <h4>Organizations</h4>
+          <OrgList />
         </aside>
         <main className="main_bar">
           <RouteHandler/>
