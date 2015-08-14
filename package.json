@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "axios": "^0.5.4",
+    "events": "^1.0.2",
     "lost": "^6.5.0",
     "normalize.css": "^3.0.3",
     "react": "^0.13.3",
