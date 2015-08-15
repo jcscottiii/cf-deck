@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import {cf} from '../cloud_foundry';
+import cfApi from '../utils/cf_api.js';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class Home extends React.Component {
   componentDidMount() {
     var self = this;
 
-    cf.getAuthStatus().then((status) => {
+    cfApi.getAuthStatus().then((status) => {
       self.setState({
         authorized: status
       });

@@ -1,12 +1,12 @@
 
 import '../../global_setup.js';
 
-import OrgStore from '../../../stores/orgs';
+import OrgStore from '../../../stores/org_store.js';
 
 describe('OrgStore', () => {
-  describe('getState()', () => {
+  describe('getAll()', () => {
     it('should return object when no state', () => {
-      expect(OrgStore.getState()).toBeObject();
+      expect(OrgStore.getAll()).toBeObject();
     });
   });
 });

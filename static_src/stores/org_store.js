@@ -1,15 +1,18 @@
 
 import {EventEmitter} from 'events';
 
-let data = {};
+import AppDispatcher from '../dispatcher';
+import orgActionTypes from '../constants.js';
+
+let _data = {};
 
 class OrgStore extends EventEmitter {
   constructor() {
     super();
   }
 
-  getState() {
-    return data;
+  getAll() {
+    return _data;
   }
 
   emitChange() {
@@ -27,17 +30,15 @@ class OrgStore extends EventEmitter {
 
 let _OrgStore = new OrgStore();
 
-/*
-Dispaterher.register(function(action) {
+AppDispatcher.register(function(action) {
   switch (action.type) {
-    case 'ORGS_RECIEVED':
-      data = action.orgs;
+    case orgActionTypes.ORGS_RECEIVED:
+      _data = action.orgs;
       _OrgStore.emitChange();
       break;
 
     default:
-      //
-
+      // Nothing
   }
 });
 

@@ -1,10 +1,21 @@
 
 import React from 'react';
 
+import orgActions from '../actions/org_actions';
+import AppDispatcher from '../dispatcher';
+import OrgStore from '../stores/org_store';
+
 export default class OrgList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { orgs: props.initialOrgs };
+    this.state = {
+      orgs: OrgStore.getAll()
+    };
+  }
+
+  componentDidMount() {
+    orgActions.fetch();
+    OrgStore.addChangeListener(this._onChange);
   }
 
   render() {
@@ -15,6 +26,12 @@ export default class OrgList extends React.Component {
         })}
       </ul>
     );
+  }
+
+  _onChange() {
+    this.setState({
+      orgs: OrgStore.getAll()
+    });
   }
 }
 

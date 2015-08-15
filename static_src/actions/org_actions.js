@@ -1,19 +1,20 @@
 
-import Dispatcher from '../dispatcher.js';
+import AppDispatcher from '../dispatcher.js';
+import cfApi from '../utils/cf_api.js';
+import orgActionTypes from '../constants.js';
 
 export default {
-  fetch(guid) {
-    AppDispatcher.handleAction({
-      type: 'ORGS_FETCH',
-      guid: guid
+  fetch() {
+    AppDispatcher.handleViewAction({
+      type: orgActionTypes.ORGS_FETCH
     });
 
-    cf.fetOrgs(guid);
+    cfApi.fetchOrgs();
   },
 
   receivedOrgs(orgs) {
-    AppDispatcher.handleAction({
-      type: 'ORGS_RECEIVED',
+    AppDispatcher.handleServerAction({
+      type: orgActionTypes.ORGS_RECEIVED,
       orgs: orgs
     });
   }

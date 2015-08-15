@@ -1,7 +1,8 @@
 
 import http from 'axios';
 
-import OrgActions from './actions/org_actions.js';
+import errorActions from '../actions/error_actions.js';
+import orgActions from '../actions/org_actions.js';
 
 const APIV = '/v2';
 
@@ -9,7 +10,7 @@ var returnAuthStatus = function(response) {
   return response.data.status
 };
 
-export var cf = {
+export default {
   getAuthStatus() {
     return http.get(APIV + '/authstatus')
       .then(returnAuthStatus, returnAuthStatus);
@@ -17,9 +18,9 @@ export var cf = {
 
   fetchOrgs() {
     return http.get(APIV + '/authstatus').then((res) => {
-      OrgActions.recievedOrgs(res.data.response);
+      orgActions.recievedOrgs(res.data.response);
     }, (err) => {
-      // ErrorActions.errorFetch(err);
+      errorActions.errorFetch(err);
     });
   }
 };
