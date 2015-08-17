@@ -6,6 +6,12 @@ import { orgActionTypes } from '../constants.js';
 
 let _data = [];
 
+function formatData(resources) {
+  return resources.map((resource) => {
+    return Object.assign(resource.entity, resource.metadata);
+  });
+}
+
 class OrgStore extends EventEmitter {
   constructor() {
     super();
@@ -33,7 +39,7 @@ let _OrgStore = new OrgStore();
 AppDispatcher.register(function(action) {
   switch (action.type) {
     case orgActionTypes.ORGS_RECEIVED:
-      _data = action.orgs;
+      _data = formatData(action.orgs);
       _OrgStore.emitChange();
       break;
 

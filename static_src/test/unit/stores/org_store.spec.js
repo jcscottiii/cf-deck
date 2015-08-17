@@ -1,6 +1,7 @@
 
 import '../../global_setup.js';
 
+import * as helpers from '../../helpers.js';
 import AppDispatcher from '../../../dispatcher.js';
 import OrgStore from '../../../stores/org_store.js';
 import { orgActionTypes } from '../../../constants';
@@ -18,7 +19,7 @@ describe('OrgStore', () => {
 
   describe('on orgs received', () => {
     it('should set data to passed in orgs', () => {
-      var expected = [{t: 1}, {t: 2}];
+      var expected = helpers.wrapOrgs([{t: 1}, {t: 2}]);
       expect(OrgStore.getAll()).toBeArray();
 
 
@@ -27,7 +28,7 @@ describe('OrgStore', () => {
         orgs: expected
       });
 
-      expect(OrgStore.getAll()).toEqual(expected);
+      expect(OrgStore.getAll()).toEqual(helpers.unwrapOrgs(expected));
     });
     
     it('should emit a change event', () => {

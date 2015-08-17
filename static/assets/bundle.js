@@ -23666,11 +23666,11 @@
 
 	var _viewsHomeJsx2 = _interopRequireDefault(_viewsHomeJsx);
 
-	var _componentsOrg_listJsx = __webpack_require__(264);
+	var _componentsOrg_listJsx = __webpack_require__(263);
 
 	var _componentsOrg_listJsx2 = _interopRequireDefault(_componentsOrg_listJsx);
 
-	var _cssComponentsHeaderCss = __webpack_require__(267);
+	var _cssComponentsHeaderCss = __webpack_require__(271);
 
 	var _cssComponentsHeaderCss2 = _interopRequireDefault(_cssComponentsHeaderCss);
 
@@ -24334,11 +24334,7 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _actionsError_actionsJs = __webpack_require__(256);
-
-	var _actionsError_actionsJs2 = _interopRequireDefault(_actionsError_actionsJs);
-
-	var _actionsOrg_actionsJs = __webpack_require__(263);
+	var _actionsOrg_actionsJs = __webpack_require__(256);
 
 	var _actionsOrg_actionsJs2 = _interopRequireDefault(_actionsOrg_actionsJs);
 
@@ -24354,10 +24350,10 @@
 	  },
 
 	  fetchOrgs: function fetchOrgs() {
-	    return _axios2['default'].get(APIV + '/authstatus').then(function (res) {
-	      _actionsOrg_actionsJs2['default'].recievedOrgs(res.data.response);
+	    return _axios2['default'].get(APIV + '/organizations').then(function (res) {
+	      _actionsOrg_actionsJs2['default'].receivedOrgs(res.data.resources);
 	    }, function (err) {
-	      _actionsError_actionsJs2['default'].errorFetch(err);
+	      errorActions.errorFetch(err);
 	    });
 	  }
 	};
@@ -26357,109 +26353,36 @@
 	  value: true
 	});
 
-	var _constantsJs = __webpack_require__(257);
-
-	var _constantsJs2 = _interopRequireDefault(_constantsJs);
-
-	var _dispatcherJs = __webpack_require__(259);
+	var _dispatcherJs = __webpack_require__(257);
 
 	var _dispatcherJs2 = _interopRequireDefault(_dispatcherJs);
 
+	var _utilsCf_apiJs = __webpack_require__(236);
+
+	var _utilsCf_apiJs2 = _interopRequireDefault(_utilsCf_apiJs);
+
+	var _constants = __webpack_require__(261);
+
 	exports['default'] = {
-	  errorFetch: function errorFetch() {
-	    // Do nothing
+	  fetch: function fetch() {
+	    _dispatcherJs2['default'].handleViewAction({
+	      type: _constants.orgActionTypes.ORGS_FETCH
+	    });
+
+	    _utilsCf_apiJs2['default'].fetchOrgs();
+	  },
+
+	  receivedOrgs: function receivedOrgs(orgs) {
+	    _dispatcherJs2['default'].handleServerAction({
+	      type: _constants.orgActionTypes.ORGS_RECEIVED,
+	      orgs: orgs
+	    });
 	  }
 	};
 	module.exports = exports['default'];
 
 /***/ },
 /* 257 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = __webpack_require__(1)['default'];
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _keymirror = __webpack_require__(258);
-
-	var _keymirror2 = _interopRequireDefault(_keymirror);
-
-	var orgActionTypes = (0, _keymirror2['default'])({
-	  ORGS_FETCH: null,
-	  ORGS_RECEIVED: null
-	});
-
-	exports.orgActionTypes = orgActionTypes;
-	var errorActionTypes = (0, _keymirror2['default'])({
-	  FETCH: null
-	});
-	exports.errorActionTypes = errorActionTypes;
-
-/***/ },
-/* 258 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 */
-
-	"use strict";
-
-	/**
-	 * Constructs an enumeration with keys equal to their value.
-	 *
-	 * For example:
-	 *
-	 *   var COLORS = keyMirror({blue: null, red: null});
-	 *   var myColor = COLORS.blue;
-	 *   var isColorValid = !!COLORS[myColor];
-	 *
-	 * The last line could not be performed if the values of the generated enum were
-	 * not equal to their keys.
-	 *
-	 *   Input:  {key1: val1, key2: val2}
-	 *   Output: {key1: key1, key2: key2}
-	 *
-	 * @param {object} obj
-	 * @return {object}
-	 */
-	var keyMirror = function(obj) {
-	  var ret = {};
-	  var key;
-	  if (!(obj instanceof Object && !Array.isArray(obj))) {
-	    throw new Error('keyMirror(...): Argument must be an object.');
-	  }
-	  for (key in obj) {
-	    if (!obj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    ret[key] = key;
-	  }
-	  return ret;
-	};
-
-	module.exports = keyMirror;
-
-
-/***/ },
-/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26476,7 +26399,7 @@
 	  value: true
 	});
 
-	var _flux = __webpack_require__(260);
+	var _flux = __webpack_require__(258);
 
 	var AppDispatcher = (function (_Dispatcher) {
 	  _inherits(AppDispatcher, _Dispatcher);
@@ -26490,18 +26413,16 @@
 	  _createClass(AppDispatcher, [{
 	    key: 'handleViewAction',
 	    value: function handleViewAction(action) {
-	      this.dispatch({
-	        source: 'VIEW_ACTION',
-	        action: action
-	      });
+	      action.source = 'VIEW_ACTION';
+	      this.dispatch(action);
+	      console.log('action', action);
 	    }
 	  }, {
 	    key: 'handleServerAction',
 	    value: function handleServerAction(action) {
-	      this.dispatch({
-	        source: 'SERVER_ACTION',
-	        action: action
-	      });
+	      action.source = 'SERVER_ACTION';
+	      this.dispatch(action);
+	      console.log('action', action);
 	    }
 	  }]);
 
@@ -26514,7 +26435,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 260 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26526,11 +26447,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
-	module.exports.Dispatcher = __webpack_require__(261)
+	module.exports.Dispatcher = __webpack_require__(259)
 
 
 /***/ },
-/* 261 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -26547,7 +26468,7 @@
 
 	"use strict";
 
-	var invariant = __webpack_require__(262);
+	var invariant = __webpack_require__(260);
 
 	var _lastID = 1;
 	var _prefix = 'ID_';
@@ -26786,7 +26707,7 @@
 
 
 /***/ },
-/* 262 */
+/* 260 */
 /***/ function(module, exports) {
 
 	/**
@@ -26845,7 +26766,7 @@
 
 
 /***/ },
-/* 263 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26856,38 +26777,83 @@
 	  value: true
 	});
 
-	var _dispatcherJs = __webpack_require__(259);
+	var _keymirror = __webpack_require__(262);
 
-	var _dispatcherJs2 = _interopRequireDefault(_dispatcherJs);
+	var _keymirror2 = _interopRequireDefault(_keymirror);
 
-	var _utilsCf_apiJs = __webpack_require__(236);
+	var orgActionTypes = (0, _keymirror2['default'])({
+	  ORGS_FETCH: null,
+	  ORGS_RECEIVED: null
+	});
 
-	var _utilsCf_apiJs2 = _interopRequireDefault(_utilsCf_apiJs);
+	var errorActionTypes = (0, _keymirror2['default'])({
+	  FETCH: null
+	});
 
-	var _constantsJs = __webpack_require__(257);
-
-	var _constantsJs2 = _interopRequireDefault(_constantsJs);
-
-	exports['default'] = {
-	  fetch: function fetch() {
-	    _dispatcherJs2['default'].handleViewAction({
-	      type: _constantsJs2['default'].ORGS_FETCH
-	    });
-
-	    _utilsCf_apiJs2['default'].fetchOrgs();
-	  },
-
-	  receivedOrgs: function receivedOrgs(orgs) {
-	    _dispatcherJs2['default'].handleServerAction({
-	      type: _constantsJs2['default'].ORGS_RECEIVED,
-	      orgs: orgs
-	    });
-	  }
-	};
-	module.exports = exports['default'];
+	exports.orgActionTypes = orgActionTypes;
+	exports.errorActionTypes = errorActionTypes;
 
 /***/ },
-/* 264 */
+/* 262 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 */
+
+	"use strict";
+
+	/**
+	 * Constructs an enumeration with keys equal to their value.
+	 *
+	 * For example:
+	 *
+	 *   var COLORS = keyMirror({blue: null, red: null});
+	 *   var myColor = COLORS.blue;
+	 *   var isColorValid = !!COLORS[myColor];
+	 *
+	 * The last line could not be performed if the values of the generated enum were
+	 * not equal to their keys.
+	 *
+	 *   Input:  {key1: val1, key2: val2}
+	 *   Output: {key1: key1, key2: key2}
+	 *
+	 * @param {object} obj
+	 * @return {object}
+	 */
+	var keyMirror = function(obj) {
+	  var ret = {};
+	  var key;
+	  if (!(obj instanceof Object && !Array.isArray(obj))) {
+	    throw new Error('keyMirror(...): Argument must be an object.');
+	  }
+	  for (key in obj) {
+	    if (!obj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    ret[key] = key;
+	  }
+	  return ret;
+	};
+
+	module.exports = keyMirror;
+
+
+/***/ },
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26910,15 +26876,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _actionsOrg_actions = __webpack_require__(263);
+	var _actionsOrg_actions = __webpack_require__(256);
 
 	var _actionsOrg_actions2 = _interopRequireDefault(_actionsOrg_actions);
 
-	var _dispatcher = __webpack_require__(259);
+	var _dispatcher = __webpack_require__(257);
 
 	var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
-	var _storesOrg_store = __webpack_require__(265);
+	var _storesOrg_store = __webpack_require__(264);
 
 	var _storesOrg_store2 = _interopRequireDefault(_storesOrg_store);
 
@@ -26929,6 +26895,7 @@
 	    _classCallCheck(this, OrgList);
 
 	    _get(Object.getPrototypeOf(OrgList.prototype), 'constructor', this).call(this, props);
+	    this._onChange = this._onChange.bind(this);
 	    this.state = {
 	      orgs: _storesOrg_store2['default'].getAll()
 	    };
@@ -26937,8 +26904,8 @@
 	  _createClass(OrgList, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _actionsOrg_actions2['default'].fetch();
 	      _storesOrg_store2['default'].addChangeListener(this._onChange);
+	      _actionsOrg_actions2['default'].fetch();
 	    }
 	  }, {
 	    key: 'render',
@@ -26949,7 +26916,7 @@
 	        this.state.orgs.map(function (org) {
 	          return _react2['default'].createElement(
 	            'li',
-	            { key: org.id },
+	            { key: org.guid },
 	            org.name
 	          );
 	        })
@@ -26974,7 +26941,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 265 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26987,23 +26954,29 @@
 
 	var _classCallCheck = __webpack_require__(234)['default'];
 
+	var _Object$assign = __webpack_require__(265)['default'];
+
 	var _interopRequireDefault = __webpack_require__(1)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
-	var _events = __webpack_require__(266);
+	var _events = __webpack_require__(270);
 
-	var _dispatcher = __webpack_require__(259);
+	var _dispatcher = __webpack_require__(257);
 
 	var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
-	var _constantsJs = __webpack_require__(257);
+	var _constantsJs = __webpack_require__(261);
 
-	var _constantsJs2 = _interopRequireDefault(_constantsJs);
+	var _data = [];
 
-	var _data = {};
+	function formatData(resources) {
+	  return resources.map(function (resource) {
+	    return _Object$assign(resource.entity, resource.metadata);
+	  });
+	}
 
 	var OrgStore = (function (_EventEmitter) {
 	  _inherits(OrgStore, _EventEmitter);
@@ -27043,8 +27016,8 @@
 
 	_dispatcher2['default'].register(function (action) {
 	  switch (action.type) {
-	    case _constantsJs2['default'].ORGS_RECEIVED:
-	      _data = action.orgs;
+	    case _constantsJs.orgActionTypes.ORGS_RECEIVED:
+	      _data = formatData(action.orgs);
 	      _OrgStore.emitChange();
 	      break;
 
@@ -27057,7 +27030,68 @@
 	module.exports = exports['default'];
 
 /***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(266), __esModule: true };
+
+/***/ },
 /* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(267);
+	module.exports = __webpack_require__(212).Object.assign;
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.3.1 Object.assign(target, source)
+	var $def = __webpack_require__(213);
+	$def($def.S, 'Object', {assign: __webpack_require__(268)});
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var toObject  = __webpack_require__(215)
+	  , ES5Object = __webpack_require__(216)
+	  , enumKeys  = __webpack_require__(269);
+	// 19.1.2.1 Object.assign(target, source, ...)
+	/* eslint-disable no-unused-vars */
+	module.exports = Object.assign || function assign(target, source){
+	/* eslint-enable no-unused-vars */
+	  var T = toObject(target, true)
+	    , l = arguments.length
+	    , i = 1;
+	  while(l > i){
+	    var S      = ES5Object(arguments[i++])
+	      , keys   = enumKeys(S)
+	      , length = keys.length
+	      , j      = 0
+	      , key;
+	    while(length > j)T[key = keys[j++]] = S[key];
+	  }
+	  return T;
+	};
+
+/***/ },
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $ = __webpack_require__(210);
+	module.exports = function(it){
+	  var keys       = $.getKeys(it)
+	    , isEnum     = $.isEnum
+	    , getSymbols = $.getSymbols;
+	  if(getSymbols)for(var symbols = getSymbols(it), i = 0, key; symbols.length > i; ){
+	    if(isEnum.call(it, key = symbols[i++]))keys.push(key);
+	  }
+	  return keys;
+	};
+
+/***/ },
+/* 270 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -27364,7 +27398,7 @@
 
 
 /***/ },
-/* 267 */
+/* 271 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

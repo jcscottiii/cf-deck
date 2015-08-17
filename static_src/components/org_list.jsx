@@ -23,7 +23,7 @@ export default class OrgList extends React.Component {
     return (
       <ul>
         { this.state.orgs.map((org) => {
-          return <li key={ org.id }>{ org.name }</li>;
+          return <li key={ org.guid }>{ org.name }</li>;
         })}
       </ul>
     );

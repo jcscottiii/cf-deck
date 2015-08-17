@@ -1,7 +1,7 @@
 
 import http from 'axios';
 
-import { orgActionTypes, errorActionTypes } from '../constants.js';
+import orgActions from '../actions/org_actions.js';
 
 const APIV = '/v2';
 
@@ -16,8 +16,8 @@ export default {
   },
 
   fetchOrgs() {
-    return http.get(APIV + '/authstatus').then((res) => {
-      orgActions.recievedOrgs(res.data.response);
+    return http.get(APIV + '/organizations').then((res) => {
+      orgActions.receivedOrgs(res.data.resources);
     }, (err) => {
       errorActions.errorFetch(err);
     });
