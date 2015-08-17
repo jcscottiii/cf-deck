@@ -17,6 +17,20 @@ describe('OrgStore', () => {
     });
   });
 
+  describe('get()', () => {
+    it('should return the correct org based on guid', () => {
+      var testOrgs = [
+        { guid: '1xxa', name: 'testOrgA' },
+        { guid: '1xxb', name: 'testOrgB' }
+      ];
+      OrgStore._data = testOrgs;
+
+      let actual = OrgStore.get(testOrgs[0].guid);
+
+      expect(actual).toEqual(testOrgs[0]);
+    });
+  });
+
   describe('on orgs received', () => {
     it('should set data to passed in orgs', () => {
       var expected = helpers.wrapOrgs([{t: 1}, {t: 2}]);

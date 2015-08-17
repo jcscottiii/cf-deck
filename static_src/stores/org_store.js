@@ -4,7 +4,7 @@ import {EventEmitter} from 'events';
 import AppDispatcher from '../dispatcher';
 import { orgActionTypes } from '../constants.js';
 
-let _data = [];
+export let _data = [];
 
 function formatData(resources) {
   return resources.map((resource) => {
