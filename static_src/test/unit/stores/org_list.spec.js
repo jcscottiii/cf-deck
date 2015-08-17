@@ -7,19 +7,19 @@ import { orgActionTypes } from '../../../constants';
         
 describe('OrgStore', () => {
   beforeEach(() => {
-    OrgStore.data = {};
+    OrgStore.data = [];
   });
 
   describe('getAll()', () => {
     it('should return object when no state', () => {
-      expect(OrgStore.getAll()).toBeObject();
+      expect(OrgStore.getAll()).toBeArray();
     });
   });
 
   describe('on orgs received', () => {
     it('should set data to passed in orgs', () => {
       var expected = [{t: 1}, {t: 2}];
-      expect(OrgStore.getAll()).toBeObject();
+      expect(OrgStore.getAll()).toBeArray();
 
 
       AppDispatcher.handleViewAction({

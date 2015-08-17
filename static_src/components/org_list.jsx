@@ -8,14 +8,15 @@ import OrgStore from '../stores/org_store';
 export default class OrgList extends React.Component {
   constructor(props) {
     super(props);
+    this._onChange = this._onChange.bind(this);
     this.state = {
       orgs: OrgStore.getAll()
     };
   }
 
   componentDidMount() {
-    orgActions.fetch();
     OrgStore.addChangeListener(this._onChange);
+    orgActions.fetch();
   }
 
   render() {

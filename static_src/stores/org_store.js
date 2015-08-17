@@ -4,7 +4,7 @@ import {EventEmitter} from 'events';
 import AppDispatcher from '../dispatcher';
 import { orgActionTypes } from '../constants.js';
 
-let _data = {};
+let _data = [];
 
 class OrgStore extends EventEmitter {
   constructor() {
