@@ -26856,21 +26856,21 @@
 	  value: true
 	});
 
-	var _constantsJs = __webpack_require__(257);
+	var _dispatcherJs = __webpack_require__(259);
 
-	var _constantsJs2 = _interopRequireDefault(_constantsJs);
+	var _dispatcherJs2 = _interopRequireDefault(_dispatcherJs);
 
 	var _utilsCf_apiJs = __webpack_require__(236);
 
 	var _utilsCf_apiJs2 = _interopRequireDefault(_utilsCf_apiJs);
 
-	var _dispatcherJs = __webpack_require__(259);
+	var _constantsJs = __webpack_require__(257);
 
-	var _dispatcherJs2 = _interopRequireDefault(_dispatcherJs);
+	var _constantsJs2 = _interopRequireDefault(_constantsJs);
 
 	exports['default'] = {
 	  fetch: function fetch() {
-	    AppDispatcher.handleViewAction({
+	    _dispatcherJs2['default'].handleViewAction({
 	      type: _constantsJs2['default'].ORGS_FETCH
 	    });
 
@@ -26878,7 +26878,7 @@
 	  },
 
 	  receivedOrgs: function receivedOrgs(orgs) {
-	    AppDispatcher.handleServerAction({
+	    _dispatcherJs2['default'].handleServerAction({
 	      type: _constantsJs2['default'].ORGS_RECEIVED,
 	      orgs: orgs
 	    });

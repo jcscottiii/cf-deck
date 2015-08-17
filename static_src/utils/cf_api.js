@@ -1,8 +1,7 @@
 
 import http from 'axios';
 
-import errorActions from '../actions/error_actions.js';
-import orgActions from '../actions/org_actions.js';
+import { orgActionTypes, errorActionTypes } from '../constants.js';
 
 const APIV = '/v2';
 

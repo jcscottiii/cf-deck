@@ -422,7 +422,6 @@ td,
 th {
   padding: 0;
 }
-
 button,
 [type="button"],
 [type="submit"],
@@ -456,7 +455,6 @@ button:hover {
 button:active {
   background-color: rgb(41, 117, 168);
 }
-
 html {
   box-sizing: border-box;
 }
@@ -468,7 +466,6 @@ html {
 [aria-hidden=true] {
   display: none !important;
 }
-
 html {
   font-size: 62.5%;
 }
@@ -534,7 +531,6 @@ h6 {
   font-size: 12px;
   font-size: 1.2rem;
 }
-
 a {
   border-bottom: 1px dotted;
   color: #00609f;
@@ -556,8 +552,6 @@ a:visited {
 .link-block {
   border-bottom: 0;
 }
-
-
 .hero__hero___Vl7L3,
 .hero {
   padding: 64px;
@@ -585,7 +579,6 @@ a:visited {
   display: table;
   clear: both;
 }
-
 .label {
   background-color: #00609f;
   border-radius: 5px;
@@ -595,7 +588,6 @@ a:visited {
   text-transform: uppercase;
   vertical-align: text-top;
 }
-
 .side_bar {
   width: calc(99.99% * 1/6 - 25px);
   padding: 24px 16px;
@@ -644,13 +636,11 @@ a:visited {
 .main_bar:nth-child(6n + 1){
   clear: left;
 }
-
 .right-content {
   margin: 32px 0;
   margin: 2rem 0;
   text-align: right;
 }
-
 .header__header___1NQ0R {
   width: 99.99%;
   *zoom: 1;
@@ -691,4 +681,3 @@ a:visited {
 .header__header___1NQ0R * {
   color: #fff;
 }
-

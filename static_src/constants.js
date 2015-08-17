@@ -1,11 +1,13 @@
 
 import keymirror from 'keymirror';
 
-export var orgActionTypes = keymirror({
+var orgActionTypes = keymirror({
   ORGS_FETCH: null,
   ORGS_RECEIVED: null
 });
 
-export var errorActionTypes = keymirror({
+var errorActionTypes = keymirror({
   FETCH: null
 });
+
+export { orgActionTypes, errorActionTypes };

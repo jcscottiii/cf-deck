@@ -2,7 +2,7 @@
 import {EventEmitter} from 'events';
 
 import AppDispatcher from '../dispatcher';
-import orgActionTypes from '../constants.js';
+import { orgActionTypes } from '../constants.js';
 
 let _data = {};
 
