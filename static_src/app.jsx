@@ -5,6 +5,7 @@ import Router from 'react-router';
 import Home from './views/home.jsx';
 
 import OrgList from './components/org_list.jsx';
+import Spaces from './components/spaces.jsx';
 
 
 import styles from './css/components/header.css';
@@ -19,6 +20,8 @@ export default class App extends React.Component {
   }
 
   render() {
+    var params = this.context.router.getCurrentParams();
+
     return (
       <div>
         <header className={ styles.header }>
@@ -29,16 +32,18 @@ export default class App extends React.Component {
           <OrgList />
         </aside>
         <main className="main_bar">
-          <RouteHandler/>
+          <RouteHandler { ...params }/>
         </main>
       </div>
     );
   }
 }
+App.contextTypes = { router: React.PropTypes.func.isRequired };
 
 var routes = (
   <Route path="/" handler={App}>
     <DefaultRoute handler={Home}/>
+    <Route name="org" path="org/:orgGuid" handler={ Spaces }/>
   </Route>
 );
 

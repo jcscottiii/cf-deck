@@ -21,5 +21,13 @@ export default {
     }, (err) => {
       errorActions.errorFetch(err);
     });
+  },
+
+  fetchOrg(guid) {
+    return http.get(APIV + '/organizations/' + guid + '/summary').then((res) => {
+      orgActions.receivedOrg(res.data);
+    }, (err) => {
+      errorActions.errorFetch(err);
+    });
   }
 };

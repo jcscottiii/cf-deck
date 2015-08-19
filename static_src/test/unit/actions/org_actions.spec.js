@@ -7,11 +7,11 @@ import orgActions from '../../../actions/org_actions.js';
 import { orgActionTypes } from '../../../constants.js';
 
 describe('orgActions', () => {
-  describe('fetch()', () => {
+  describe('fetchAll()', () => {
     it('should call apis fetch method', () => {
       var spy = sinon.spy(cfApi, 'fetchOrgs');
 
-      orgActions.fetch();
+      orgActions.fetchAll();
 
       expect(spy).toHaveBeenCalledOnce();
     });
@@ -19,7 +19,7 @@ describe('orgActions', () => {
     it('should dispatch a view event of type orgs fetch', () => {
       var spy = sinon.spy(AppDispatcher, 'handleViewAction');
 
-      orgActions.fetch();
+      orgActions.fetchAll();
 
       let arg = spy.getCall(0).args[0];
       expect(arg.type).toEqual(orgActionTypes.ORGS_FETCH);

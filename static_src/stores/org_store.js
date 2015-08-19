@@ -17,6 +17,12 @@ class OrgStore extends EventEmitter {
     super();
   }
 
+  get(guid) {
+    return Array.find(_data, (org) => {
+      return org.guid === guid;
+    });
+  }
+
   getAll() {
     return _data;
   }
@@ -38,6 +44,14 @@ let _OrgStore = new OrgStore();
 
 AppDispatcher.register(function(action) {
   switch (action.type) {
+    case orgActionTypes.ORG_RECEIVED:
+      var toUpdate = Array.find(_data, (org) => {
+        return org.guid === action.org.guid;
+      });
+      toUpdate = Object.assign(toUpdate, action.org);
+      _OrgStore.emitChange();
+      break;
+
     case orgActionTypes.ORGS_RECEIVED:
       _data = formatData(action.orgs);
       _OrgStore.emitChange();

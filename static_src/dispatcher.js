@@ -5,12 +5,12 @@ class AppDispatcher extends Dispatcher {
   handleViewAction(action) {
     action.source = 'VIEW_ACTION';
     this.dispatch(action);
-    console.log('action', action);
+    console.log('::action::', action);
   }
   handleServerAction(action) {
     action.source = 'SERVER_ACTION';
     this.dispatch(action);
-    console.log('action', action);
+    console.log('::action::', action);
   }
 }
 
