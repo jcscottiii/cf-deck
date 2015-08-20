@@ -20,6 +20,7 @@ describe('Spaces', () => {
       spaces;
 
   beforeEach(() => {
+    OrgStore._data = [];
     sandbox = sinon.sandbox.create();
     spaces = TestUtils.renderIntoDocument(<Spaces/>);
   });
@@ -32,7 +33,7 @@ describe('Spaces', () => {
   describe('render()', () => {
     // TODO this test can't be run because the browser breaks when trying to
     // stub the OrgStore.get method.
-    xit('should render each space', () => {
+    it('should render each space', () => {
       var testGuid = 'xxaa1',
           testSpaces = {
             guid: testGuid,
@@ -42,7 +43,7 @@ describe('Spaces', () => {
             ]
           };
       
-      sandbox.stub(OrgStore, 'get').returns(testSpaces);
+      OrgStore._data = testSpaces;
 
       spaces = TestUtils.renderIntoDocument(<Spaces orgGuid={ testGuid }/>)
 
