@@ -4,9 +4,9 @@ import '../../global_setup.js';
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
 
-// Spaces
-// SpacesStore
-// Spaces Action
+import Spaces from '../../../components/spaces.jsx';
+import OrgStore from '../../../stores/org_store.js';
+import orgActions from '../../../actions/org_actions.js';
 
 function setupSpaces(testSpaces) {
   var spaces = TestUtils.renderIntoDocument(<Spaces/>);
@@ -15,38 +15,57 @@ function setupSpaces(testSpaces) {
   return spaces;
 }
 
-xdescribe('Spaces', () => {
+describe('Spaces', () => {
+  var sandbox,
+      spaces;
+
+  beforeEach(() => {
+    sandbox = sinon.sandbox.create();
+    spaces = TestUtils.renderIntoDocument(<Spaces/>);
+  });
+
+  afterEach(() => {
+    React.unmountComponentAtNode(React.findDOMNode(spaces).parentNode);
+    sandbox.restore();
+  });
+
   describe('render()', () => {
+    // TODO this test can't be run because the browser breaks when trying to
+    // stub the OrgStore.get method.
     xit('should render each space', () => {
-      var spaces = TestUtils.renderIntoDocument(<Spaces/>),
+      var testGuid = 'xxaa1',
           testSpaces = {
+            guid: testGuid,
             spaces: [
-              { guid: 1, name: 'testspace1' },
-              { guid: 2, name: 'testspace2' }
+              { guid: 'aai', name: 'testspace1' },
+              { guid: 'bba', name: 'testspace2' }
             ]
           };
+      
+      sandbox.stub(OrgStore, 'get').returns(testSpaces);
 
-      orgActions.receivedOrg(testSpaces);
+      spaces = TestUtils.renderIntoDocument(<Spaces orgGuid={ testGuid }/>)
 
-      let items = TestUtils.scryRenderedDOMComponentsWithClass(
-          spaces, 'test-space');
+      let items = TestUtils.scryRenderedDOMComponentsWithTag(
+          spaces, 'tr');
 
       expect(items).toBeArrayOfSize(2);
     });
 
     it('should render message if no spaces', () => {
-      var spaces = TestUtils.renderIntoDocument(<Spaces/>);
+      spaces = TestUtils.renderIntoDocument(<Spaces/>);
 
-      let message = TestUtils.scryRenderedDOMComponentsWithClass(
+      let message = TestUtils.findRenderedDOMComponentWithClass(
             spaces, 'test-none_message');
 
-      expect(message).toBeEl();
-      expect(message).toHaveText(); 
+      expect(message.getDOMNode().textContent).toBeTruthy();
     });
 
-    it('should link to the space page', () => {
-      var spaces = TestUtils.renderIntoDocument(<Spaces/>),
-          testSpaces = {
+    // TODO this test can't be run because theres an error when receivedOrg
+    // is called, probably related to router.
+    xit('should link to the space page', () => {
+      spaces = TestUtils.renderIntoDocument(<Spaces/>),
+      var testSpaces = {
             spaces: [
               { guid: '1aaxx', name: 'testspace1' }
             ]
@@ -60,29 +79,6 @@ xdescribe('Spaces', () => {
           items, 'a');
 
       expect(a.attributes.href).toContain(testSpaces[0].guid);
-    });
-  });
-
-  xdescribe('sortBy', () => {
-    it('should sort the elements by field passed', () => {
-      var testSpaces = [
-            { guid: 1, name: 'testspace1', app_count: 2 },
-            { guid: 2, name: 'testspace2', app_count: 1 }
-          ],
-          spaces = setupSpaces(testSpaces);
-
-      let items = TestUtils.scryRenderedDOMComponentsWithClass(
-          spaces, 'test-space');
-
-      let actual = items[0].innerHTML();
-      expected = new RegExp(name);
-
-      expect(expected.test(actual)).toBe(true);
-
-      spaces.sortBy('app_count');
-      actual = items[1].innerHTML();
-
-      expect(expected.test(actual)).toBe(true);
     });
   });
 });

@@ -24,10 +24,6 @@ export default class OrgList extends React.Component {
     orgActions.fetchAll();
   }
 
-  gotoOrg(orgGuid) {
-    window.location.href = '/org/' + orgGuid;
-  }
-
   render() {
     return (
       <ul>

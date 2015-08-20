@@ -30,12 +30,6 @@ export default class Spaces extends React.Component {
     orgActions.fetch(this.props.orgGuid);
   }
 
-  _renderHeader(label, cellDataKey) {
-    return (
-      <a onClick={this._sortRowsBy.bind(null, cellDataKey)}>{label}</a>
-    );
-  }
-
   _onChange() {
     this.setState(stateSetter(this.props.orgGuid));
   }
@@ -52,7 +46,11 @@ export default class Spaces extends React.Component {
 
     return (
       <div className="tableWrapper">
-        <Table data={ rows } columns={ columns } sortable={ true } />
+        { rows.length > 0 ? (
+          <Table data={ rows } columns={ columns } sortable={ true } />
+        ) : (
+          <h3 className="test-none_message">No spaces found</h3>
+        )}
       </div>
     );
   }

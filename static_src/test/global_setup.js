@@ -1,4 +1,5 @@
 
+import TestUtils from 'react/lib/ReactTestUtils';
 
 Function.prototype.bind = Function.prototype.bind || function (thisp) {
   var fn = this;
@@ -48,7 +49,7 @@ var messageUtils = {
   }
 };
 
-var matchers = [
+var sinonMatchers = [
   {
     sinonName: 'called',
     jasmineName: 'toHaveBeenCalled',
@@ -209,8 +210,34 @@ function createJasmineSinonMatchers(matchers) {
   return jasmineSinonMatchers;
 }
 
+/*
+reactMatchers = {
+  toHaveText: (util, customEqualityTesters) {
+    return {
+      compare(actual, expected) {
+        var result = {};
+
+        if (expected === undefined) {
+          expected = '';
+        }
+
+        let regexp = text instanceof RegExp ? text : new RegExp(text, 'ig');
+        const pass = element.getDOMNode().textContent.match(regexp);
+
+        if(result.pass) {
+          result.message = "Expected " + actual + "to have text";
+        } else {
+          result.message = "Expected " + actual + "to have text but none found";
+        }
+      }
+    }
+  }
+}
+*/
+
 beforeEach(function() {
-  jasmine.addMatchers(createJasmineSinonMatchers(matchers));
+  jasmine.addMatchers(createJasmineSinonMatchers(sinonMatchers));
+  //jasmine.addMatchers(reactMatchers);
 });
 
 jasmine.jasmineSinon = {

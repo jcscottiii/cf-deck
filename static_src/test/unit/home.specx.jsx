@@ -91,6 +91,7 @@ describe('Home', () => {
       home = TestUtils.renderIntoDocument(<Home/>);
       actual = home.state.authorized;
       expect(actual).toEqual(expected)
+      stub.restore();
     });
   });
 });

@@ -27643,15 +27643,6 @@
 	      _actionsOrg_actions2['default'].fetch(this.props.orgGuid);
 	    }
 	  }, {
-	    key: '_renderHeader',
-	    value: function _renderHeader(label, cellDataKey) {
-	      return _react2['default'].createElement(
-	        'a',
-	        { onClick: this._sortRowsBy.bind(null, cellDataKey) },
-	        label
-	      );
-	    }
-	  }, {
 	    key: '_onChange',
 	    value: function _onChange() {
 	      this.setState(stateSetter(this.props.orgGuid));
@@ -27666,7 +27657,11 @@
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: 'tableWrapper' },
-	        _react2['default'].createElement(Table, { data: rows, columns: columns, sortable: true })
+	        rows.length > 0 ? _react2['default'].createElement(Table, { data: rows, columns: columns, sortable: true }) : _react2['default'].createElement(
+	          'h3',
+	          { className: 'test-none_message' },
+	          'No spaces found'
+	        )
 	      );
 	    }
 	  }]);

@@ -4,7 +4,7 @@ import {EventEmitter} from 'events';
 import AppDispatcher from '../dispatcher';
 import { orgActionTypes } from '../constants.js';
 
-export let _data = [];
+let _data = [];
 
 function formatData(resources) {
   return resources.map((resource) => {
@@ -47,7 +47,7 @@ AppDispatcher.register(function(action) {
     case orgActionTypes.ORG_RECEIVED:
       var toUpdate = Array.find(_data, (org) => {
         return org.guid === action.org.guid;
-      });
+      }) || {};
       toUpdate = Object.assign(toUpdate, action.org);
       _OrgStore.emitChange();
       break;
