@@ -466,6 +466,48 @@ html {
 [aria-hidden=true] {
   display: none !important;
 }
+a {
+  border-bottom: 1px dotted;
+  color: #00609f;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+}
+
+a:hover, a:active {
+  color: rgb(30, 119, 179);
+}
+
+a:visited {
+  color: #00609f;
+}
+
+.link-block {
+  border-bottom: 0;
+}
+table {
+  border-spacing: 0;
+  margin: 2em 0;
+  min-width: 100%;
+
+}
+
+table thead tr {
+  background-color: #efefef;
+}
+
+table thead th {
+  text-align: left;
+}
+
+table th, table td {
+  border: 1px solid #5b616b;
+  line-height: 1;
+  padding: 24px;
+  padding: 1.5rem;
+}
 html {
   font-size: 62.5%;
 }
@@ -530,27 +572,6 @@ h5 {
 h6 {
   font-size: 12px;
   font-size: 1.2rem;
-}
-a {
-  border-bottom: 1px dotted;
-  color: #00609f;
-  text-decoration: none;
-}
-
-a:hover {
-  border-bottom: 1px solid;
-}
-
-a:hover, a:active {
-  color: rgb(30, 119, 179);
-}
-
-a:visited {
-  color: #00609f;
-}
-
-.link-block {
-  border-bottom: 0;
 }
 .hero__hero___Vl7L3,
 .hero {

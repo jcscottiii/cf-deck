@@ -3,8 +3,9 @@ import 'normalize.css';
 
 import './css/elements/button.css';
 import './css/elements/global.css';
-import './css/elements/typography.css';
 import './css/elements/links.css';
+import './css/elements/tables.css';
+import './css/elements/typography.css';
 
 import './css/components/hero.css';
 import './css/components/label.css';

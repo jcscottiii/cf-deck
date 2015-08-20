@@ -1,0 +1,23 @@
+
+@import 'vars.css';
+
+table {
+  border-spacing: 0;
+  margin: 2em 0;
+  min-width: 100%;
+
+}
+
+table thead tr {
+  background-color: var(--gray-x-light);
+}
+
+table thead th {
+  text-align: left;
+}
+
+table th, table td {
+  border: 1px solid var(--gray);
+  line-height: 1;
+  padding: 1.5rem;
+}
