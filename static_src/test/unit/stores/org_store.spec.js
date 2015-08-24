@@ -5,7 +5,7 @@ import * as helpers from '../../helpers.js';
 import AppDispatcher from '../../../dispatcher.js';
 import OrgStore from '../../../stores/org_store.js';
 import { orgActionTypes } from '../../../constants';
-        
+
 describe('OrgStore', () => {
   var sandbox;
 
@@ -110,7 +110,7 @@ describe('OrgStore', () => {
 
       expect(OrgStore.getAll()).toEqual(helpers.unwrapOrgs(expected));
     });
-    
+
     it('should emit a change event', () => {
       var spy = sandbox.spy(OrgStore, 'emitChange');
 
