@@ -9,6 +9,30 @@ import Space from '../../../components/space.jsx';
 import SpaceStore from '../../../stores/space_store.js';
 import spaceActions from '../../../actions/space_actions.js';
 
+class TestTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
+  render() {
+    var rows = this.props.data;
+    return (
+      <table>
+      {rows.map(function(row, i) {
+        return (
+          <tr key={i}>
+            {row.length && row.map(function(col, j) {
+              return <td key={j}>{col}</td>;
+            })}
+          </tr>
+        );
+      })}
+      </table>
+    );
+  }
+}
+
 describe('Space', () => {
   var sandbox,
       space,
@@ -17,7 +41,7 @@ describe('Space', () => {
   beforeEach(() => {
     SpaceStore._data = [];
     sandbox = sinon.sandbox.create();
-    Table = sandbox.stub(Reactable, 'Table');
+    Space.Table = TestTable;
   });
 
   afterEach(() => {
@@ -65,6 +89,31 @@ describe('Space', () => {
   });
 
   describe('render()', () => {
+    it('should render message if no spaces', () => {
+      space = TestUtils.renderIntoDocument(<Space spaceGuid={ 'spaabsf' } />);
 
+      let message = TestUtils.findRenderedDOMComponentWithClass(
+            space, 'test-none_message');
+
+      expect(message.getDOMNode().textContent).toBeTruthy();
+    });
+
+    it('should render a row for each app', () => {
+      var testGuid = 'sp787sdf';
+      
+      let testSpace = {
+        guid: testGuid,
+        apps: [{ name: 'test1', guid: 'apadf'}, { name: 'test2', guid: 'apadf'}]
+      };
+      SpaceStore._data = [testSpace];
+      Space.Table = TestTable;
+
+      space = TestUtils.renderIntoDocument(<Space spaceGuid={ testGuid }/>)
+
+      let items = TestUtils.scryRenderedDOMComponentsWithTag(
+          space, 'tr');
+
+      expect(items).toBeArrayOfSize(2);
+    });
   });
 });
