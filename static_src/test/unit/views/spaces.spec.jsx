@@ -4,6 +4,7 @@ import '../../global_setup.js';
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
 
+import TestTable from '../react_helpers.jsx';
 import Spaces from '../../../components/spaces.jsx';
 import OrgStore from '../../../stores/org_store.js';
 import orgActions from '../../../actions/org_actions.js';
@@ -23,6 +24,7 @@ describe('Spaces', () => {
     OrgStore._data = [];
     sandbox = sinon.sandbox.create();
     spaces = TestUtils.renderIntoDocument(<Spaces/>);
+    Spaces.Table = TestTable;
   });
 
   afterEach(() => {
@@ -33,7 +35,7 @@ describe('Spaces', () => {
   describe('render()', () => {
     // TODO this test can't be run because the browser breaks when trying to
     // create the Spaces component.
-    xit('should render each space', () => {
+    it('should render each space', () => {
       var testGuid = 'xxaa1',
           testSpaces = [
             {

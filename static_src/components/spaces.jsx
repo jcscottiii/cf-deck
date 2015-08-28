@@ -47,7 +47,7 @@ export default class Spaces extends React.Component {
     return (
       <div className="tableWrapper">
         { rows.length > 0 ? (
-          <Table data={ rows } columns={ columns } sortable={ true } />
+          <Spaces.Table data={ rows } columns={ columns } sortable={ true } />
         ) : (
           <h3 className="test-none_message">No spaces found</h3>
         )}
@@ -58,3 +58,4 @@ export default class Spaces extends React.Component {
 }
 Spaces.propTypes = { orgGuid: React.PropTypes.string.isRequired };
 Spaces.defaultProps = {};
+Spaces.Table = Table;

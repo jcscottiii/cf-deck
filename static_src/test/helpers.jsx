@@ -1,5 +1,4 @@
 
-import React from 'react';
 
 export function wrapOrgs(orgs) {
   var n = 0;
