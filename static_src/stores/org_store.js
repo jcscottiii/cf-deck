@@ -17,7 +17,7 @@ class OrgStore extends EventEmitter {
   }
 
   get(guid) {
-    return Array.find(this._data, (org) => {
+    return this._data.find((org) => {
       return org.guid === guid;
     });
   }

@@ -2,6 +2,8 @@
 import http from 'axios';
 
 import orgActions from '../actions/org_actions.js';
+import spaceActions from '../actions/space_actions.js';
+import errorActions from '../actions/error_actions.js';
 
 const APIV = '/v2';
 
@@ -32,6 +34,10 @@ export default {
   },
 
   fetchSpace(guid) {
-
+    return http.get(APIV + '/spaces/' + guid + '/sumary').then((res) => {
+      spaceActions.receivedSpace(res.data);
+    }, (err) => {
+      errorActions.errorFetch(err);
+    });
   }
 };
