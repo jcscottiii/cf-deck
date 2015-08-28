@@ -16,18 +16,22 @@ class TestTable extends React.Component {
   }
 
   render() {
-    var rows = this.props.data;
+    var rows = this.props.data,
+        cols = this.props.cols;
+
     return (
       <table>
-      {rows.map(function(row, i) {
-        return (
-          <tr key={i}>
-            {row.length && row.map(function(col, j) {
-              return <td key={j}>{col}</td>;
-            })}
-          </tr>
-        );
-      })}
+        <tbody>
+          {rows.map(function(row, i) {
+            return (
+              <tr key={i}>
+                {row.length && row.map(function(col, j) {
+                  return <td key={j}>{col}</td>;
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     );
   }
