@@ -1,12 +1,15 @@
 
 import React from 'react';
 import Reactable from 'reactable';
+import Router from 'react-router';
 
 import orgActions from '../actions/org_actions';
 import AppDispatcher from '../dispatcher';
 import OrgStore from '../stores/org_store';
 
+var Link = Router.Link;
 var Table = Reactable.Table;
+var unsafe = Reactable.unsafe;
 
 function stateSetter(orgGuid) {
   var org = OrgStore.get(orgGuid);
@@ -34,6 +37,10 @@ export default class Spaces extends React.Component {
     this.setState(stateSetter(this.props.orgGuid));
   }
 
+  _buildLink() {
+
+  }
+
   render() {
     var columns = [
       { label: 'Name', key: 'name' },
@@ -43,6 +50,11 @@ export default class Spaces extends React.Component {
     ];
 
     let rows = this.state.rows;
+    for (let row of rows) {
+      row.name =  unsafe('<a href="/#/spaces/' + row.guid + '">' + 
+        row.name +'</a>');
+    }
+    console.log(rows);
 
     return (
       <div className="tableWrapper">
@@ -54,7 +66,6 @@ export default class Spaces extends React.Component {
       </div>
     );
   }
-
 }
 Spaces.propTypes = { orgGuid: React.PropTypes.string.isRequired };
 Spaces.defaultProps = {};

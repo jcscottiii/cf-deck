@@ -30,7 +30,7 @@ export default class OrgList extends React.Component {
         { this.state.orgs.map((org) => {
           return ( 
             <li key={ org.guid }>
-              <Link to="org" params={{orgGuid: org.guid}}>{ org.name }</Link>
+              <Link to="org" params={{ orgGuid: org.guid }}>{ org.name }</Link>
             </li>
           );
         })}

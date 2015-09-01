@@ -5,6 +5,7 @@ import Router from 'react-router';
 import Home from './views/home.jsx';
 
 import OrgList from './components/org_list.jsx';
+import Space from './components/space.jsx';
 import Spaces from './components/spaces.jsx';
 
 
@@ -41,14 +42,15 @@ export default class App extends React.Component {
 App.contextTypes = { router: React.PropTypes.func.isRequired };
 
 var routes = (
-  <Route path="/" handler={App}>
-    <DefaultRoute handler={Home}/>
+  <Route handler={ App }>
+    <DefaultRoute handler={ Home }/>
     <Route name="org" path="org/:orgGuid" handler={ Spaces }/>
+    <Route name="space" path="spaces/:spaceGuid" handler={ Space }/>
   </Route>
 );
 
 export function run(selector) {
-  Router.run(routes, Router.HistoryLocation, (Root) => {
+  Router.run(routes, Router.HashLocation, (Root) => {
     React.render(<Root/>, selector);
   });
 };
