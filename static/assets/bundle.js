@@ -24396,7 +24396,7 @@
 	  },
 
 	  fetchSpace: function fetchSpace(guid) {
-	    return _axios2['default'].get(APIV + '/spaces/' + guid + '/sumary').then(function (res) {
+	    return _axios2['default'].get(APIV + '/spaces/' + guid + '/summary').then(function (res) {
 	      _actionsSpace_actionsJs2['default'].receivedSpace(res.data);
 	    }, function (err) {
 	      _actionsError_actionsJs2['default'].errorFetch(err);
@@ -27743,7 +27743,7 @@
 	  }, {
 	    key: '_onChange',
 	    value: function _onChange() {
-	      this.state = stateSetter(this.props.spaceGuid);
+	      this.setState(stateSetter(this.props.spaceGuid));
 	    }
 	  }, {
 	    key: 'render',
@@ -28924,9 +28924,6 @@
 	    value: function _onChange() {
 	      this.setState(stateSetter(this.props.orgGuid));
 	    }
-	  }, {
-	    key: '_buildLink',
-	    value: function _buildLink() {}
 	  }, {
 	    key: 'render',
 	    value: function render() {
