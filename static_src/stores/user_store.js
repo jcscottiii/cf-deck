@@ -1,7 +1,8 @@
-
 /*
  * Store for user data. Will store and update user data on changes from UI and
  * server.
+ *
+ * @flow
  */
 
 import AppDispatcher from '../dispatcher';
@@ -9,7 +10,13 @@ import BaseStore from './base_store.js';
 import cfApi from '../util/cf_api.js';
 import { userActionTypes } from '../constants.js';
 
+import type {HttpError} from '../models/errors.js';
+import type {User} from '../models/user.js';
+
 class UserStore extends BaseStore {
+  _data: Array<User>;
+  _error: ?HttpError;
+
   constructor() {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
@@ -17,7 +24,7 @@ class UserStore extends BaseStore {
     this._error = null;
   }
 
-  _registerToActions(action) {
+  _registerToActions(action: any) {
     switch(action.type) {
       case userActionTypes.ORG_USERS_FETCH:
         cfApi.fetchOrgUsers(action.orgGuid);
@@ -81,19 +88,19 @@ class UserStore extends BaseStore {
   /**
    * Get all users in a certain space
    */
-  getAllInSpace(spaceGuid) {
+  getAllInSpace(spaceGuid: string): Array<User> {
     return this._data.filter((user) => {
       return user.spaceGuid === spaceGuid;
     });
   }
 
-  getAllInOrg(orgGuid) {
+  getAllInOrg(orgGuid: string): Array<User> {
     return this._data.filter((user) => {
       return user.orgGuid === orgGuid;
     });
   }
 
-  getError() {
+  getError(): ?HttpError {
     return this._error;
   }
 

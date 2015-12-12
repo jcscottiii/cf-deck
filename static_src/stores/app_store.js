@@ -1,7 +1,8 @@
-
 /*
  * Store for app data. Will store and update app data on changes from UI and
  * server.
+ * 
+ * @flow
  */
 
 import AppDispatcher from '../dispatcher';
@@ -10,14 +11,18 @@ import cfApi from '../util/cf_api.js';
 import LoginStore from './login_store.js';
 import { appActionTypes } from '../constants.js';
 
+import type {App} from '../models/app.js';
+
 class AppStore extends BaseStore {
+  _data: Array<App>;
+
   constructor() {
     super();
     this.subscribe(() => this._registerToActions.bind(this));
     this._data = [];
   }
 
-  _registerToActions(action) {
+  _registerToActions(action: any) {
     switch(action.type) {
       case appActionTypes.APP_FETCH:
         cfApi.fetchApp(action.appGuid);

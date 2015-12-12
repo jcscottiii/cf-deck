@@ -1,28 +1,33 @@
-
 /*
  * Actions for user entities. Any actions such as fetching, creating, updating,
  * etc should go here.
+ *
+ * @flow
  */
 
 import AppDispatcher from '../dispatcher.js';
 import { userActionTypes } from '../constants';
 
+import type {HttpError} from '../models/errors.js';
+import type {User} from '../models/user.js';
+
+
 export default {
-  fetchOrgUsers(orgGuid) {
+  fetchOrgUsers(orgGuid: string): void {
     AppDispatcher.handleViewAction({
       type: userActionTypes.ORG_USERS_FETCH,
       orgGuid: orgGuid
     });
   },
 
-  fetchSpaceUsers(spaceGuid) {
+  fetchSpaceUsers(spaceGuid: string) {
     AppDispatcher.handleViewAction({
       type: userActionTypes.SPACE_USERS_FETCH,
       spaceGuid: spaceGuid
     });
   },
 
-  receivedOrgUsers(users, orgGuid) {
+  receivedOrgUsers(users: Array<User>, orgGuid: string) {
     AppDispatcher.handleServerAction({
       type: userActionTypes.ORG_USERS_RECEIVED,
       users: users,
@@ -30,7 +35,7 @@ export default {
     });
   },
 
-  receivedSpaceUsers(users, spaceGuid) {
+  receivedSpaceUsers(users: Array<User>, spaceGuid: string) {
     AppDispatcher.handleServerAction({
       type: userActionTypes.SPACE_USERS_RECEIVED,
       users: users,
@@ -38,7 +43,7 @@ export default {
     });
   },
 
-  deleteUser(userGuid, orgGuid) {
+  deleteUser(userGuid: string, orgGuid: string) {
     AppDispatcher.handleViewAction({
       type: userActionTypes.USER_DELETE,
       userGuid: userGuid,
@@ -46,7 +51,7 @@ export default {
     });
   },
 
-  deletedUser(userGuid, orgGuid) {
+  deletedUser(userGuid: string, orgGuid: string) {
     AppDispatcher.handleServerAction({
       type: userActionTypes.USER_DELETED,
       userGuid: userGuid,
@@ -54,7 +59,7 @@ export default {
     });
   },
 
-  errorRemoveUser(userGuid, error) {
+  errorRemoveUser(userGuid: string, error: HttpError) {
     AppDispatcher.handleServerAction({
       type: userActionTypes.ERROR_REMOVE_USER,
       userGuid: userGuid,

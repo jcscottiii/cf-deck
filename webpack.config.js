@@ -16,9 +16,15 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.jsx?$/,
-        loader: 'babel?optional[]=runtime&stage=0',
-        exclude: /node_modules/ },
+      { 
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'stage-0', 'react'],
+          plugins: ['transform-runtime', 'transform-flow-strip-types']
+        }
+      },
       { test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },

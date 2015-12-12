@@ -1,0 +1,16 @@
+[ignore]
+./static/
+.*/react/node_modules/.*
+.*/node_modules/*
+.*node_modules/npm/test/.*
+
+[include]
+./node_modules/
+
+[libs]
+./static_src/flow_decl/
+./node_modules/fbjs/flow/include
+./node_modules/fbjs/node_modules/promise
+
+[options]
+module.system=haste

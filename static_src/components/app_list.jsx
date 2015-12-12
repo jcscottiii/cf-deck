@@ -1,8 +1,11 @@
+/* @flow */
 
 import React from 'react';
 import Reactable from 'reactable';
 
 import SpaceStore from '../stores/space_store.js';
+
+import type {App} from '../models/app.js';
 
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
@@ -37,7 +40,7 @@ export default class AppList extends React.Component {
     this.setState(stateSetter(this.props));
   }
 
-  appUrl(app) {
+  appUrl(app: App): string {
     return `/#/org/${ this.state.currentOrgGuid }
       /spaces/${ this.state.currentSpaceGuid }
       /apps/${ app.guid }`;
